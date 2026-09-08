@@ -39,8 +39,8 @@ The routing harness assigns tasks to a heterogeneous model pool, records tool in
 
 | Checkpoint | Parameters | Hugging Face | ModelScope | Base model |
 | --- | :---: | --- | --- | --- |
-| NeoHorse-1-4B | ~4B | [TokenRhythm/NeoHorse-1-4B](https://huggingface.co/TokenRhythm/NeoHorse-1-4B) | [Coming soon](#) | Qwen3.5-4B |
-| NeoHorse-1-9B | ~9B | [TokenRhythm/NeoHorse-1-9B](https://huggingface.co/TokenRhythm/NeoHorse-1-9B) | [Coming soon](#) | Qwen3.5-9B |
+| NeoHorse-1-4B | ~4B | [NeoHorse-1-4B](https://huggingface.co/TokenRhythm/NeoHorse-1-4B) | [NeoHorse-1-4B](https://www.modelscope.cn/models/TokenRhythm/NeoHorse-1-4B) | Qwen3.5-4B |
+| NeoHorse-1-9B | ~9B | [NeoHorse-1-9B](https://huggingface.co/TokenRhythm/NeoHorse-1-9B) | [NeoHorse-1-9B](https://www.modelscope.cn/models/TokenRhythm/NeoHorse-1-9B) | Qwen3.5-9B |
 
 Both checkpoints are released as text input/text output language-model weights for self-hosted inference. Each model card contains its model-specific evaluation table and deployment notes.
 
