@@ -17,6 +17,14 @@ NeoHorse-1 is a family of causal language models and an initial prototype on the
 
 The routing harness assigns tasks to a heterogeneous model pool, records tool interactions and outcomes, estimates capability demand, and feeds capability-level feedback into the next training mixture. Updated models can return to the harness, forming a prototype evaluation–selection–update loop; extending this loop across successive iterations is the next step toward RSI.
 
+## News
+
+- **[2026-09-08]** 📦 **GGUF and quantized models on Hugging Face!** We release [NeoHorse-1-4B-GGUF](https://huggingface.co/TokenRhythm/NeoHorse-1-4B-GGUF) and [NeoHorse-1-9B-GGUF](https://huggingface.co/TokenRhythm/NeoHorse-1-9B-GGUF). Both include **16-bit (BF16) weights** and **smaller 8-bit, 5-bit, and 4-bit quantized versions** that use less disk space and memory, making it easier to run NeoHorse on your own hardware.
+
+- **[2026-09-08]** 🚀 **Now on ModelScope!** [NeoHorse-1-4B](https://www.modelscope.cn/models/TokenRhythm/NeoHorse-1-4B) and [NeoHorse-1-9B](https://www.modelscope.cn/models/TokenRhythm/NeoHorse-1-9B) are now available on ModelScope.
+
+- **[2026-09-07]** 🎉 **NeoHorse-1 is here!** We release [NeoHorse-1-4B](https://huggingface.co/TokenRhythm/NeoHorse-1-4B) and [NeoHorse-1-9B](https://huggingface.co/TokenRhythm/NeoHorse-1-9B) under the **Apache 2.0** license.
+
 <p align="center">
   <a href="./assets/4B_head_fig.jpg">
     <img src="./assets/4B_head_fig.jpg" alt="NeoHorse-1-4B evaluation results" width="100%">
@@ -152,7 +160,7 @@ vllm serve "$MODEL_PATH" \
   --tool-call-parser qwen3_coder
 ```
 
-The 262,144-token setting is a configured limit; actual capacity depends on GPU memory and serving settings. Reduce it if needed. These launch examples have not yet been validated on GPU for this repackaged release.
+The 262,144-token setting is a configured limit; actual capacity depends on GPU memory and serving settings. Reduce it if needed.
 
 The examples below target vLLM at `http://127.0.0.1:8000`. For SGLang, use `http://127.0.0.1:30000`. For the 9B checkpoint, use `--model neohorse-1-9B` and launch the server with `--served-model-name neohorse-1-9B`.
 
