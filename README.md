@@ -11,13 +11,15 @@
   <a href="https://www.apache.org/licenses/LICENSE-2.0"><img alt="License: Apache-2.0" src="https://img.shields.io/badge/License-Apache--2.0-64748B"></a>
 </div>
 
-<div align="center"><a href="./TechnicalReport_NeoHorse_v1.pdf">Technical Report</a></div>
+<div align="center"><a href="https://arxiv.org/abs/2609.08183">Technical Report</a></div>
 
 NeoHorse-1 is a family of causal language models and an initial prototype on the path toward **recursive self-improvement (RSI)**. The 4B and 9B checkpoints are post-trained from Qwen3.5 for text-based agent harnesses, tool use, coding, and instruction following.
 
 The routing harness assigns tasks to a heterogeneous model pool, records tool interactions and outcomes, estimates capability demand, and feeds capability-level feedback into the next training mixture. Updated models can return to the harness, forming a prototype evaluation–selection–update loop; extending this loop across successive iterations is the next step toward RSI.
 
 ## News
+
+- **[2026-09-09]** 📄 **Technical report on arXiv!** Our [technical report](https://arxiv.org/abs/2609.08183) is now available, covering the routing harness, agentic post-training, and evaluation of NeoHorse-1.
 
 - **[2026-09-08]** 📦 **GGUF and quantized models on Hugging Face!** We release [NeoHorse-1-4B-GGUF](https://huggingface.co/TokenRhythm/NeoHorse-1-4B-GGUF) and [NeoHorse-1-9B-GGUF](https://huggingface.co/TokenRhythm/NeoHorse-1-9B-GGUF). Both include **16-bit (BF16) weights** and **smaller 8-bit, 5-bit, and 4-bit quantized versions** that use less disk space and memory, making it easier to run NeoHorse on your own hardware.
 
@@ -213,6 +215,10 @@ NeoHorse-1 is released under the [Apache License 2.0](https://www.apache.org/lic
   title        = {NeoHorse-1: Towards Recursive Self-Improvement via Agentic Post-Training with Routing Harness},
   author       = {NeoHorse Team},
   year         = {2026},
-  howpublished = {arXiv preprint}
+  howpublished = {arXiv preprint},
+  eprint       = {2609.08183},
+  archivePrefix = {arXiv},
+  primaryClass = {cs.CL},
+  url          = {https://arxiv.org/abs/2609.08183}
 }
 ```
