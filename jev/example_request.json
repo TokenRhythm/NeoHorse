@@ -1,0 +1,26 @@
+{
+  "state": "The corridor ahead is blocked. The left route is clear.",
+  "questions": {
+    "move": {
+      "type": "choice",
+      "instructions": "Choose the safe route.",
+      "criteria": {
+        "left": "Take the clear route.",
+        "forward": "Hit the blockage."
+      }
+    },
+    "blocked": {
+      "type": "noul",
+      "instructions": "Is the corridor ahead blocked?"
+    },
+    "risk": {
+      "type": "score",
+      "instructions": "Risk of moving forward.",
+      "criteria": [
+        "low",
+        "medium",
+        "high"
+      ]
+    }
+  }
+}
