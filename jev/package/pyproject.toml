@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "neohorse-decision"
+version = "1.0.0"
+description = "NeoHorse-JEV prefill-only decision inference"
+requires-python = ">=3.11"
+dependencies = ["torch==2.8.0", "transformers==5.17.0", "safetensors==0.8.0", "pydantic==2.13.5"]
+
+[project.optional-dependencies]
+vision = ["pillow==12.3.0"]
+serve = ["fastapi==0.141.1", "uvicorn==0.53.0", "starlette==1.6.0", "pillow==12.3.0"]
+test = ["httpx==0.28.1"]
+
+[project.scripts]
+neohorse-decision = "neohorse_decision.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+neohorse_decision = ["_vendor/LICENSE", "_vendor/NOTICE.md"]
