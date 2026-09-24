@@ -1,0 +1,5 @@
+{%- for message in messages -%}
+{%- for item in message['content'] -%}
+{%- if item['type'] == 'text' -%}{{ item['text'] }}{%- elif item['type'] == 'image' or item['type'] == 'image_url' -%}{{ '<|vision_start|><|image_pad|><|vision_end|>' }}{%- endif -%}
+{%- endfor -%}
+{%- endfor -%}

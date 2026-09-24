@@ -1,0 +1,10 @@
+{
+  "state": "The left path is clear; the path ahead is blocked.",
+  "questions": {
+    "move": {
+      "type": "choice",
+      "instructions": "Choose a clear direction.",
+      "criteria": {"left": "Turn left", "forward": "Go forward"}
+    }
+  }
+}

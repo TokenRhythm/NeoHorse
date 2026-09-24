@@ -1,0 +1,6 @@
+torch>=2.6
+transformers==5.16.1
+pydantic>=2,<3
+safetensors>=0.4
+requests>=2.31
+Pillow>=10

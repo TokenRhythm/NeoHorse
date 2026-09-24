@@ -1,0 +1,11 @@
+{
+  "model": "NeoHorse-Jev-4B",
+  "state": "Look at the supplied image.",
+  "questions": {
+    "color": {
+      "type": "choice",
+      "instructions": "What is the main color of the image?",
+      "criteria": {"red": "Mostly red.", "blue": "Mostly blue.", "green": "Mostly green."}
+    }
+  }
+}

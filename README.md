@@ -1,24 +1,24 @@
-
 <div align="center">
-  <h1>NeoHorse-1</h1>
+  <h1>NeoHorse</h1>
   <p><b>Towards Recursive Self-Improvement via Agentic Post-Training with Routing Harness.</b></p>
 </div>
 
 <div align="center">
-  <a href="https://huggingface.co/collections/TokenRhythm/neohorse-1"><img alt="Hugging Face" src="https://img.shields.io/badge/Hugging%20Face-Models-FFD21E?logo=huggingface&logoColor=000000"></a>
-  <a href="https://www.modelscope.cn/collections/TokenRhythm/NeoHorse-1"><img alt="ModelScope" src="https://img.shields.io/badge/ModelScope-Models-624AFF?logo=modelscope&logoColor=white"></a>
+  <a href="https://github.com/TokenRhythm/NeoHorse"><img alt="GitHub" src="https://img.shields.io/badge/GitHub-NeoHorse-181717?logo=github&logoColor=white"></a>
+  <a href="https://huggingface.co/TokenRhythm"><img alt="Hugging Face" src="https://img.shields.io/badge/Hugging%20Face-Models-FFD21E?logo=huggingface&logoColor=000000"></a>
+  <a href="https://www.modelscope.cn/organization/TokenRhythm"><img alt="ModelScope" src="https://img.shields.io/badge/ModelScope-Models-624AFF?logo=modelscope&logoColor=white"></a>
   <a href="https://tokenrhythm.ai/"><img alt="Company" src="https://img.shields.io/badge/Company-TokenRhythm-F97316?logo=homeassistant&logoColor=white"></a>
   <a href="https://x.com/opensquilla"><img alt="Twitter / X" src="https://img.shields.io/badge/Twitter%20%2F%20X-OpenSquilla-111827?logo=x&logoColor=white"></a>
   <a href="https://www.apache.org/licenses/LICENSE-2.0"><img alt="License: Apache-2.0" src="https://img.shields.io/badge/License-Apache--2.0-64748B"></a>
 </div>
 
-<div align="center"><a href="https://arxiv.org/abs/2609.08183">Technical Report</a></div>
+<div align="center"><a href="#neohorse-jev">NeoHorse-Jev</a> · <a href="#neohorse-1">NeoHorse-1</a></div>
 
-NeoHorse-1 is a family of causal language models and an initial prototype on the path toward **recursive self-improvement (RSI)**. The 4B and 9B checkpoints are post-trained from Qwen3.5 for text-based agent harnesses, tool use, coding, and instruction following.
-
-The routing harness assigns tasks to a heterogeneous model pool, records tool interactions and outcomes, estimates capability demand, and feeds capability-level feedback into the next training mixture. Updated models can return to the harness, forming a prototype evaluation–selection–update loop; extending this loop across successive iterations is the next step toward RSI.
+**NeoHorse** is TokenRhythm's family of open-weight models for agent workflows. **NeoHorse-1** provides 4B and 9B language models for tool use, coding, and instruction following. **NeoHorse-Jev** builds on NeoHorse-1-4B to make structured decisions through prefill-only inference.
 
 ## News
+
+- **[2026-09-24]** 🚀 **[NeoHorse-Jev-4B](#neohorse-jev) is here!** Our new decision model brings **Choice**, **Noul**, and **Score** to the NeoHorse family. [Explore the release](jev/README.md).
 
 - **[2026-09-09]** 📄 **Technical report on arXiv!** Our [technical report](https://arxiv.org/abs/2609.08183) is now available, covering the routing harness, agentic post-training, and evaluation of NeoHorse-1.
 
@@ -27,6 +27,53 @@ The routing harness assigns tasks to a heterogeneous model pool, records tool in
 - **[2026-09-08]** 🚀 **Now on ModelScope!** [NeoHorse-1-4B](https://www.modelscope.cn/models/TokenRhythm/NeoHorse-1-4B) and [NeoHorse-1-9B](https://www.modelscope.cn/models/TokenRhythm/NeoHorse-1-9B) are now available on ModelScope.
 
 - **[2026-09-07]** 🎉 **NeoHorse-1 is here!** We release [NeoHorse-1-4B](https://huggingface.co/TokenRhythm/NeoHorse-1-4B) and [NeoHorse-1-9B](https://huggingface.co/TokenRhythm/NeoHorse-1-9B) under the **Apache 2.0** license.
+
+## Introduction
+
+### NeoHorse-Jev
+
+<div align="center">
+  <a href="https://github.com/TokenRhythm/NeoHorse/tree/main/jev"><img alt="GitHub" src="https://img.shields.io/badge/GitHub-NeoHorse--Jev-181717?logo=github&logoColor=white"></a>
+  <a href="https://huggingface.co/collections/TokenRhythm/neohorse-jev"><img alt="Hugging Face" src="https://img.shields.io/badge/Hugging%20Face-NeoHorse--Jev-FFD21E?logo=huggingface&logoColor=000000"></a>
+  <a href="https://www.modelscope.cn/models/TokenRhythm/NeoHorse-Jev-4B"><img alt="ModelScope" src="https://img.shields.io/badge/ModelScope-NeoHorse--Jev--4B-624AFF?logo=modelscope&logoColor=white"></a>
+</div>
+
+<div align="center"><a href="jev/README.md#deployment">Deployment</a></div>
+
+**NeoHorse-Jev-4B** turns application state into decisions and probabilities. Built on NeoHorse-1-4B, it uses **prefill-only inference** to select an action with **Choice**, check a condition with **Noul**, or assign a rating with **Score**. Applications define the questions and possible answers, then use the results to route requests, select tools, or control a workflow.
+
+In our evaluation, it scores **77.70 across six text benchmark groups**, the highest among the four open-weight decision models with complete results in the comparison. Across Nimble, VitaminC, and MASSIVE, it reaches **83.26% mean accuracy**, **11.50 percentage points** above NeoHorse-1-4B. See the [full comparison and evaluation protocols](jev/README.md#evaluation).
+
+#### Text Decision Benchmarks
+
+| Model | JevBench | Kev | OpenJev text | Nimble | VitaminC | MASSIVE | AVG |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| [Open-Jev-9B](https://huggingface.co/ZefanCai/Open-Jev-9B) | **77.13** | 77.87 | **65.39** | <ins>80.50</ins> | 68.28 | 84.86 | <ins>75.67</ins> |
+| [Kev-4B](https://huggingface.co/jaredpalmer/kev-4b) | 73.71 | <ins>81.47</ins> | 54.75 | 73.40 | 76.46 | **85.71** | 74.25 |
+| [Laya English](https://huggingface.co/convaiinnovations/laya) | 55.82 | 61.30 | 40.07 | 45.04 | **78.63** | 68.57 | 58.24 |
+| [Laya Typed Decisions](https://huggingface.co/convaiinnovations/laya-typed-decisions) | -- | -- | -- | 48.94 | <ins>78.30</ins> | 65.43 | -- |
+| **[NeoHorse-1-4B](https://huggingface.co/TokenRhythm/NeoHorse-1-4B)** | -- | -- | -- | 69.15 | 63.27 | 82.86 | -- |
+| **[NeoHorse-Jev-4B](https://huggingface.co/TokenRhythm/NeoHorse-Jev-4B)** | <ins>75.73</ins> | **81.92** | <ins>58.74</ins> | **87.23** | 77.13 | <ins>85.43</ins> | **77.70** |
+
+Scores are on a 0–100 scale; higher is better. **Bold scores** mark the best result and <ins>underlined scores</ins> the second-best among the listed entries. **AVG** is the equal-weight mean of the six benchmark groups. `--` indicates unavailable results; only models with all six groups are ranked by AVG.
+
+![NeoHorse-Jev decision demos](jev/assets/jev-six-demo-grid.gif)
+
+*Tetris, Snake, robot manipulation, Mahjong, four-player bomb arena, and autonomous driving — left to right, top to bottom.*
+
+### NeoHorse-1
+
+<div align="center">
+  <a href="https://github.com/TokenRhythm/NeoHorse"><img alt="GitHub" src="https://img.shields.io/badge/GitHub-NeoHorse-181717?logo=github&logoColor=white"></a>
+  <a href="https://huggingface.co/collections/TokenRhythm/neohorse-1"><img alt="Hugging Face" src="https://img.shields.io/badge/Hugging%20Face-NeoHorse--1-FFD21E?logo=huggingface&logoColor=000000"></a>
+  <a href="https://www.modelscope.cn/collections/TokenRhythm/NeoHorse-1"><img alt="ModelScope" src="https://img.shields.io/badge/ModelScope-NeoHorse--1-624AFF?logo=modelscope&logoColor=white"></a>
+</div>
+
+<div align="center"><a href="https://arxiv.org/abs/2609.08183">Technical Report</a></div>
+
+NeoHorse-1 is a family of causal language models and an initial prototype on the path toward **recursive self-improvement (RSI)**. The 4B and 9B checkpoints are post-trained from Qwen3.5 for text-based agent harnesses, tool use, coding, and instruction following.
+
+The routing harness assigns tasks to a heterogeneous model pool, records tool interactions and outcomes, estimates capability demand, and feeds capability-level feedback into the next training mixture. Updated models can return to the harness, forming a prototype evaluation–selection–update loop; extending this loop across successive iterations is the next step toward RSI.
 
 <p align="center">
   <a href="./assets/4B_head_fig.jpg">
@@ -40,7 +87,7 @@ The routing harness assigns tasks to a heterogeneous model pool, records tool in
   </a>
 </p>
 
-## Highlights
+#### Highlights
 
 - **Agentic post-training framework:** routing-guided curriculum SFT and routing-guided on-policy distillation turn execution trajectories into training signal while preserving execution and harness context.
 - **Data quality:** exact and near-duplicate removal, evaluation decontamination, structural validation, six-dimensional semantic evaluation, and subscene-level Scene/Goal/Outcome labeling.
@@ -50,12 +97,15 @@ The routing harness assigns tasks to a heterogeneous model pool, records tool in
 
 | Checkpoint | Parameters | Hugging Face | ModelScope | Base model |
 | --- | :---: | --- | --- | --- |
+| **NeoHorse-Jev-4B** | ~4B | [NeoHorse-Jev-4B](https://huggingface.co/TokenRhythm/NeoHorse-Jev-4B) | [NeoHorse-Jev-4B](https://www.modelscope.cn/models/TokenRhythm/NeoHorse-Jev-4B) | NeoHorse-1-4B |
 | NeoHorse-1-4B | ~4B | [NeoHorse-1-4B](https://huggingface.co/TokenRhythm/NeoHorse-1-4B) | [NeoHorse-1-4B](https://www.modelscope.cn/models/TokenRhythm/NeoHorse-1-4B) | Qwen3.5-4B |
 | NeoHorse-1-9B | ~9B | [NeoHorse-1-9B](https://huggingface.co/TokenRhythm/NeoHorse-1-9B) | [NeoHorse-1-9B](https://www.modelscope.cn/models/TokenRhythm/NeoHorse-1-9B) | Qwen3.5-9B |
 
-Both checkpoints are released as text input/text output language-model weights for self-hosted inference. Each model card contains its model-specific evaluation table and deployment notes.
+NeoHorse-1 checkpoints use a text input/text output interface. NeoHorse-Jev returns structured decisions and probabilities; download its complete model bundle and use the matching runtime or backend adapter. Each model card contains evaluation results and deployment instructions for that model.
 
 ## Model Details
+
+The specifications below cover **NeoHorse-1-4B** and **NeoHorse-1-9B**. Details for the decision model are in the [NeoHorse-Jev documentation](jev/README.md#download-model).
 
 <table width="100%" style="width:100%;border-collapse:collapse;table-layout:fixed;font-size:14px">
 <thead><tr><th style="padding:9px 10px;text-align:left;border-bottom:2px solid #f97316;color:#c2410c;background:#fff7ed">Property</th><th style="padding:9px 10px;text-align:left;border-bottom:2px solid #f97316;color:#c2410c;background:#fff7ed">NeoHorse-1-4B</th><th style="padding:9px 10px;text-align:left;border-bottom:2px solid #f97316;color:#c2410c;background:#fff7ed">NeoHorse-1-9B</th></tr></thead>
@@ -70,7 +120,7 @@ Both checkpoints are released as text input/text output language-model weights f
 
 ## Evaluation
 
-The tables report the ten-benchmark protocol from the technical report. Results are grouped by capability. Higher is better; `Δ` is NeoHorse minus the same-size Qwen baseline. **Bold** marks the best result in each benchmark row; ties share the same formatting.
+The tables report **NeoHorse-1** results under the ten-benchmark protocol from the technical report. Results are grouped by capability. Higher is better; `Δ` is NeoHorse minus the same-size Qwen baseline. **Bold** marks the best result in each benchmark row; ties share the same formatting. For structured decision benchmarks, see the [NeoHorse-Jev evaluation](jev/README.md#evaluation).
 
 ### 4B track
 
@@ -133,7 +183,9 @@ The 9B comparison includes five representative open-weight baselines from the te
 
 ## Deployment
 
-These examples serve a checkpoint downloaded to local disk. Set `MODEL_PATH` to the directory containing `config.json`, tokenizer files, and weights. The request `model` value is the served alias (`neohorse-1-4B` or `neohorse-1-9B`), not the filesystem path.
+For **NeoHorse-Jev-4B**, follow its [deployment guide](jev/README.md#deployment) for vLLM, SGLang, or the native Python runtime, including Choice, Noul, and Score examples.
+
+The examples below serve **NeoHorse-1-4B** or **NeoHorse-1-9B** downloaded to local disk. Set `MODEL_PATH` to the directory containing `config.json`, tokenizer files, and weights. The request `model` value is the served alias (`neohorse-1-4B` or `neohorse-1-9B`), not the filesystem path.
 
 ### SGLang
 
@@ -208,6 +260,8 @@ This example sends a predefined weather query and prints the tool call generated
 ## License
 
 NeoHorse-1 is released under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). The upstream models are Qwen3.5-4B and Qwen3.5-9B.
+
+NeoHorse-Jev-4B is also released under Apache License 2.0. Its inference package includes components adapted from [Kev](https://github.com/jaredpalmer/kev); see the [NeoHorse-Jev license and acknowledgments](jev/README.md#license-and-acknowledgments) for attribution and bundled third-party notices.
 
 ## Citation
 
