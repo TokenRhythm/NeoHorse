@@ -364,7 +364,7 @@ Use the matching `neohorse_decision` package for the native runtime. The vLLM an
 
 #### 2. Install the Runtime
 
-The recorded test environment is **Linux, Python 3.12, PyTorch 2.8.0, Transformers 5.17.0, Triton 3.7.1, and flash-linear-attention 0.5.2**, with a CUDA GPU that supports BF16. See [environment.json](https://www.modelscope.cn/models/TokenRhythm/NeoHorse-Jev-4B/file/view/master/environment.json) and [DEPLOYMENT.md](DEPLOYMENT.md) for details.
+The recorded test environment is **Linux, Python 3.12, PyTorch 2.8.0, Transformers 5.17.0, Triton 3.7.1, and flash-linear-attention 0.5.2**, with a CUDA GPU that supports BF16. See [environment.json](https://huggingface.co/TokenRhythm/NeoHorse-Jev-4B/blob/main/environment.json) and [DEPLOYMENT.md](DEPLOYMENT.md) for details.
 
 The following commands assume these ML dependencies are already installed in an isolated environment and GPU 0 has been allocated to your workload:
 

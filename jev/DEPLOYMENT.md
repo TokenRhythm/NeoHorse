@@ -4,9 +4,9 @@ This guide covers installation and text and image inference with the `neohorse_d
 
 ## 1. Installation
 
-Download the complete release from the [ModelScope model repository](https://www.modelscope.cn/models/TokenRhythm/NeoHorse-Jev-4B) and install its bundled runtime. Loading the model requires `backbone/`, `tokenizer/`, `pointer_head.safetensors`, and `model_manifest.json`. Image examples are also included in the release.
+Download the complete release from [Hugging Face](https://huggingface.co/TokenRhythm/NeoHorse-Jev-4B/tree/main) or [ModelScope](https://www.modelscope.cn/models/TokenRhythm/NeoHorse-Jev-4B) and install its bundled runtime. Loading the model requires `backbone/`, `tokenizer/`, `pointer_head.safetensors`, and `model_manifest.json`. Image examples are also included in the release.
 
-The recorded environment is Linux, Python 3.12, PyTorch 2.8.0, Transformers 5.17.0, Triton 3.7.1, and flash-linear-attention 0.5.2, with a CUDA GPU that supports BF16. Version details are in [environment.json](https://www.modelscope.cn/models/TokenRhythm/NeoHorse-Jev-4B/file/view/master/environment.json). The following commands assume these ML dependencies are already installed in an isolated environment:
+The recorded environment is Linux, Python 3.12, PyTorch 2.8.0, Transformers 5.17.0, Triton 3.7.1, and flash-linear-attention 0.5.2, with a CUDA GPU that supports BF16. Version details are in [environment.json](https://huggingface.co/TokenRhythm/NeoHorse-Jev-4B/blob/main/environment.json). The following commands assume these ML dependencies are already installed in an isolated environment:
 
 ```bash
 export MODEL_DIR="/path/to/NeoHorse-Jev-4B"
@@ -29,11 +29,11 @@ cd /path/to/NeoHorse/jev
 python -m pip install --no-deps ./package
 ```
 
-`MODEL_DIR` still points to the complete model bundle downloaded from ModelScope. The source installation replaces the wheel installation step above.
+`MODEL_DIR` still points to the complete model bundle downloaded from Hugging Face or ModelScope. The source installation replaces the wheel installation step above.
 
 ### Model Composition
 
-The unified multimodal backbone contains the language model, vision encoder, and merger (`Qwen3_5Model`, with `language_model` and `visual` components). Backbone weights use BF16; the separate pointer head uses FP32. Keep weights, tokenizer, configuration, and runtime from the same release together. Release provenance is recorded in [model_manifest.json](https://www.modelscope.cn/models/TokenRhythm/NeoHorse-Jev-4B/file/view/master/model_manifest.json).
+The unified multimodal backbone contains the language model, vision encoder, and merger (`Qwen3_5Model`, with `language_model` and `visual` components). Backbone weights use BF16; the separate pointer head uses FP32. Keep weights, tokenizer, configuration, and runtime from the same release together. Release provenance is recorded in [model_manifest.json](https://huggingface.co/TokenRhythm/NeoHorse-Jev-4B/blob/main/model_manifest.json).
 
 ## 2. Local Text Inference
 
