@@ -1,6 +1,6 @@
-# JEV Inference
+# NeoHorse-Jev Inference
 
-Choose vLLM or SGLang for text-only or single-image-plus-text requests. From the NeoHorse repository root, run `cd jev` before the commands below and replace `/path/to/model` with the complete model directory downloaded from [ModelScope](https://www.modelscope.cn/models/TokenRhythm/NeoHorse-Jev-4B).
+Choose vLLM or SGLang for text-only or single-image-plus-text requests. From the NeoHorse repository root, run `cd jev` before the commands below and replace `/path/to/model` with the complete model directory downloaded from [Hugging Face](https://huggingface.co/TokenRhythm/NeoHorse-Jev-4B/tree/main) or [ModelScope](https://www.modelscope.cn/models/TokenRhythm/NeoHorse-Jev-4B).
 
 Use an existing environment for your chosen backend. If example dependencies are missing, install the corresponding requirements; skip this step when they are already installed:
 
@@ -96,4 +96,4 @@ python infer/sglang/infer.py --bundle /path/to/model \
 
 Both return `answers.move.choice` and `answers.move.probabilities`. Image requests currently support one image and one question, with limits of 8 MiB, 16 million pixels, and 1,024 visual tokens. Resize images that exceed these limits. You may include one `<image>` marker in `state` to choose the insertion point; without it, the image is placed at the beginning of the background.
 
-> The model directory must include the complete language and vision weights in `backbone/` (including `preprocessor_config.json`), plus `tokenizer/`, `pointer_head.safetensors`, and `model_manifest.json`. The supplied adapters have passed text and image smoke tests in the existing environments at the versions above. Fresh installation, production concurrency, and full accuracy evaluation have not yet been validated.
+> The model directory must include the complete language and vision weights in `backbone/` (including `preprocessor_config.json`), plus `tokenizer/`, `pointer_head.safetensors`, and `model_manifest.json`. The supplied adapters have passed text and image smoke tests in the existing environments at the versions above. Model results and the backend used for each measurement are listed in [Evaluation](../README.md#evaluation). Fresh installation and production concurrency have not yet been validated.
